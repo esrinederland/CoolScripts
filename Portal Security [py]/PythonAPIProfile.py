@@ -35,7 +35,7 @@ def main():
     except:
         print("Error in main") 
 
-    print("Demo gereed")
+    print("Script completed")
 
 
 def GetGIS():
