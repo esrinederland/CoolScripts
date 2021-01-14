@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "14663625-f904-4d32-baf2-301e44d2862d",
+		"name": "Coolscripts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.arcgis.com/sharing/rest/generateToken?username=username&password=password&referer=http://www.arcgis.com&f=json",
+					"protocol": "https",
+					"host": [
+						"www",
+						"arcgis",
+						"com"
+					],
+					"path": [
+						"sharing",
+						"rest",
+						"generateToken"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "username"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "referer",
+							"value": "http://www.arcgis.com"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
