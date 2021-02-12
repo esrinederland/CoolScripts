@@ -1,5 +1,5 @@
 # FindLayer
-![FindLayer](../images/20210212_Screenshot_FindLayer.jpg)
+![FindLayer](../images/20210212_Screenshot_FindLayer.jpg)<br/>
 This example shows how to find the layer based on the title in the webmap
 <br>
 
