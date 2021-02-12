@@ -4,5 +4,4 @@ This example shows how to find the layer based on the title in the webmap
 <br>
 
 <br>
-View this example live:
-[here](https://esrinederland.github.io/CoolScripts/FindLayer/FindLayer.html)
+View this example live: https://esrinederland.github.io/CoolScripts/FindLayer/FindLayer.html
