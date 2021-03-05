@@ -1,7 +1,7 @@
 import requests
 
 #setting up variables
-API_KEY = "AAPKc641339214554353bdd63b00c859cb6f--MMNcOb3mOlcPU7uCwxyL0trs-YCKDrzUkH1Ip0y4AffaV1UDBkDjWFU1e2jyaj"
+API_KEY = "<<YOUR API KEY>>"
 address="Koggelaan 33, Zwolle"
 geocode_url = "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates"
 
