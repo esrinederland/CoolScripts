@@ -23,7 +23,7 @@ Once you have created an application, you can retrieve an access token to commun
 ```https://www.strava.com/oauth/authorize?client_id=<yourClientID>&redirect_uri=http://localhost&response_type=code&scope=activity:read_all```
 <br>
 <br>
-Next, paste this URL into your browser and grant access to your application. This will redirect you to your given redirect URL (in our case 'localhost') and in the new URL you will find the authorization code.
+Next, paste this URL into your browser and grant access to your application. This will redirect you to your given redirect URL (in our case 'localhost') and in the new URL you will find the authorization code. So it is correct if you see this screen:
 <br>
 <br>
 ![Authorization Code](../images/20210513_Screenshot_StravaOAuth.JPG)
