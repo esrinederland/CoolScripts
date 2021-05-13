@@ -6,7 +6,7 @@ This sample shows how to connect to the Strava API and retrieve your own activit
 
 The code for this sample was written to create a Dashboard to show the progress of two athletes during the 4x4x48 challenge. The challenge was designed by old Navy Seal David Goggins and consists of running a length of 4 miles (6.5 km) every 4 hours for a total of 48 hours. This results in a running distance of 77.28 km divided over 12 rounds. This challenge is designed to raise money for charity, in this case for the KiKa foundation to fund research on childhood cancer. 
 
-![4x4x48 Dashboard](../images/20210513_Screenshot_StravaDashboard.jpg)
+![4x4x48 Dashboard](../images/20210513_Screenshot_StravaDashboard.JPG)
 <br>
 <br>
 View the Dashboard live:
@@ -21,7 +21,7 @@ Once you have created an application, you can retrieve an access token to commun
 ```https://www.strava.com/oauth/authorize?client_id=<yourClientID>&redirect_uri=http://localhost&response_type=code&scope=activity:read_all```
 <br>
 Next, paste this URL into your browser and grant access to your application. This will redirect you to your given redirect URL (in our case 'localhost') and in the new URL you will find the authorization code.
-![Authorization Code](../images/20210513_Screenshot_StravaOAuth.jpg)
+![Authorization Code](../images/20210513_Screenshot_StravaOAuth.JPG)
 <br>
 With this authorization code you can generate a new access token. Use a HTTP REST Client (for example Postman) to perform a POST to `https://www.strava.com/api/v3/oauth/token`. In this POST give the following params:
 
