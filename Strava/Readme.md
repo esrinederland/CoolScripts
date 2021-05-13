@@ -14,20 +14,26 @@ View the Dashboard live:
 
 ## Getting access to the Strava API
 
-To be able to retrieve your own information from Strava you have to register an API application first. This can be done on the [Strava website](https://www.strava.com/settings/api). For the `Authorization Callback Domain` set 'localhost', as this will be the URL you will be redirected to when authenticating yourself. 
+To be able to retrieve your own information from Strava you have to register an API application first. This can be done on the [Strava website](https://www.strava.com/settings/api). For the `Authorization Callback Domain` set `localhost`, as this will be the URL you will be redirected to when authenticating yourself. 
+<br>
 <br>
 Once you have created an application, you can retrieve an access token to communicate with the Strava API. Accesss token on Strava have a 'scope', this determines which actions can be performed with the given token. For using this script an access token with the `activity:read_all` scope is required. To get an authorization code to generate an access token, you have to replace the client id in the following URL with your own API applications' client id.
 <br>
+<br>
 ```https://www.strava.com/oauth/authorize?client_id=<yourClientID>&redirect_uri=http://localhost&response_type=code&scope=activity:read_all```
 <br>
+<br>
 Next, paste this URL into your browser and grant access to your application. This will redirect you to your given redirect URL (in our case 'localhost') and in the new URL you will find the authorization code.
+<br>
+<br>
 ![Authorization Code](../images/20210513_Screenshot_StravaOAuth.JPG)
 <br>
+<br>
 With this authorization code you can generate a new access token. Use a HTTP REST Client (for example Postman) to perform a POST to `https://www.strava.com/api/v3/oauth/token`. In this POST give the following params:
-
-- `client_id` = <yourClientID>
-- `client_secret` = <yourClientSecret>
-- `code` = <yourAuthorizationCode>
-- `grant_type` = 'authorization_code'
+<br>
+- `client_id` = `<yourClientID>`
+- `client_secret` = `<yourClientSecret>`
+- `code` = `<yourAuthorizationCode>`
+- `grant_type` = authorization_code
 <br>
 This will give a JSON result with your new access token. Copy and Paste this JSON into the `yourToken.txt` file. 
