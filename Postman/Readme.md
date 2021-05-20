@@ -22,7 +22,7 @@ The second request uses Postmans "Params" again to add a "features" parameter, b
 
 ![POST request 414 response](../images/request_uri_too_large.png)
 
-The "correct" way of sending POST requests in Postman, where the length of the parameters doesn't matter (within certain limits of course), is to add them to the "Body" of your request. You can choose to add them as "x-www-form-urlencoded" as key-value pairs, just as you would in "Params". 
+The "correct" way of sending POST requests in Postman, where size <b><i>does not</i></b> matter (within certain limits of course), is to add them to the "Body" of your request. You can choose to add them as "x-www-form-urlencoded" as key-value pairs, just as you would in "Params". 
 
 ![Postmans Body tab with x-www-form-urlencoded parameters](../images/body_params.png)
 
