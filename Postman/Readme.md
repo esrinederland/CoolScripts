@@ -20,7 +20,7 @@ To demonstrate this you will find 3 "addFeature" requests in this Postman collec
 
 The second request uses Postmans "Params" again to add a "features" parameter, but in this case it's a polygon of the whole municipality of Zwolle. This polygon contains way more coordinate pairs and adds up to a total length of 107327 charachters. A bit more than the limit of 2048. This request will therefore fail. Where a successful request will return a HTTP status code "200", this will return a "414" which means the URI is too long (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/414).
 
-![POST request 414 response](../images/request_uri_too_long.png)
+![POST request 414 response](../images/request_uri_too_large.png)
 
 The "correct" way of sending POST requests in Postman, where the length of the parameters doesn't matter (within certain limits of course), is to add them to the "Body" of your request. You can choose to add them as "x-www-form-urlencoded" as key-value pairs, just as you would in "Params". 
 
