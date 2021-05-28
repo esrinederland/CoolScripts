@@ -1,6 +1,7 @@
 import json
 import copy
 import requests
+import datetime
 
 from logUtils import *
 
@@ -8,7 +9,7 @@ from logUtils import *
 _logFilePath = r"D:/Temp/Logging/createViews_[date].log"
 
 # ArcGIS Online
-_sourceFSUrl = "https://services6.arcgis.com/PJ2O5BaHcA2bnIXr/ArcGIS/rest/services/Onderwijslocaties/FeatureServer"
+_sourceFLUrl = ""
 _uniqueValueField = "PROVINCIE"
 _username = ""
 _password = ""
@@ -29,7 +30,7 @@ _sourceItem = None
 def main():
 
     # Start logging
-    ConfigureLogging(_logFilePath)
+    ConfigureLogging(_logFilePath, level="INFO")
     LogInfo("Script started")   
 
     # Read source service information
@@ -47,11 +48,12 @@ def main():
 def getUniqueValues():
     """Get the unique values from the Feature Service"""
 
-    queryUrl = f"{_sourceFSUrl}/query"
+    queryUrl = f"{_sourceFLUrl}/query"
     queryParams = {}
     queryParams["where"] = "1 = 1"
     queryParams["outFields"] = _uniqueValueField
     queryParams["returnDistinctValues"] = True
+    queryParams["returnGeometry"] = False
     queryResponse = sendRequest(queryUrl, queryParams)
 
     uniqueValues = [feature["attributes"][_uniqueValueField] for feature in queryResponse["features"]]
@@ -64,7 +66,7 @@ def createViewForUniqueValue(uniqueValue):
     # Create json with view information using source service
     viewJson = {}
     # Generate a unique name for the view (fs name + unique value)
-    viewJson["name"] = f"{_sourceFSUrl.split('/')[-2]} {uniqueValue}"
+    viewJson["name"] = f"{_sourceFLUrl.split('/')[-3]} {uniqueValue}"
     for serviceProperty in _viewServiceProperties:
         viewJson[serviceProperty] = _sourceService[serviceProperty]
 
@@ -92,7 +94,7 @@ def createViewForUniqueValue(uniqueValue):
         sourceLayerJson = {}
         for layerProperty in _viewLayerProperties:
             sourceLayerJson[layerProperty] = json.dumps(_sourceLayer[layerProperty])
-        sourceLayerJson["url"] = f"{_sourceFSUrl}/0"
+        sourceLayerJson["url"] = _sourceFLUrl
         sourceLayerJson["adminLayerInfo"] = {
             "viewLayerDefinition": {
                 "sourceServiceName": sourceLayerJson["url"].split("/")[-3],
@@ -159,10 +161,10 @@ def readSourceData():
     LogInfo("Loading source data and information into memory")
 
     # Feature Service Definition
-    _sourceService = sendRequest(_sourceFSUrl)
+    _sourceService = sendRequest(_sourceFLUrl[:-2])
 
     # Feature Layer (0) Definition
-    sourceLayerUrl = f"{_sourceFSUrl}/0"
+    sourceLayerUrl = _sourceFLUrl
     _sourceLayer = sendRequest(sourceLayerUrl)
 
     # Item Description
