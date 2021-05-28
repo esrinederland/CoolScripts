@@ -10,6 +10,6 @@ To create views using a Python script and the ArcGIS REST API you need to take t
 4. Update the layer in the view to add the Definition Expression for the selected value
 5. In this case, the source feature service is private, while all views are being shared publicly
 
-![CreateViews](../images/20210527_Screenshot_CreateViews.jpg)<br/>
+![CreateViews](../images/screenshot_CreateViews.jpg)<br/>
 
 ![ViewsInOnline](../images/views_in_online.png)<br/>
