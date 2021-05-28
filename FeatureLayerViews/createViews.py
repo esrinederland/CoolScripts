@@ -9,7 +9,7 @@ _logFilePath = r"D:/Temp/Logging/createViews_[date].log"
 
 # ArcGIS Online
 _sourceFSUrl = "https://services6.arcgis.com/PJ2O5BaHcA2bnIXr/ArcGIS/rest/services/Onderwijslocaties/FeatureServer"
-_provinceFLUrl = "https://services.arcgis.com/nSZVuSZjHpEZZbRo/ArcGIS/rest/services/Provincie_veiligheidsregio_GGD_regio/FeatureServer/0"
+_uniqueValueField = "PROVINCIE"
 _username = ""
 _password = ""
 
@@ -35,39 +35,41 @@ def main():
     # Read source service information
     readSourceData()
 
-    # Get provinces
-    provinces = getProvinces()
+    # Get unique values
+    uniqueValues = getUniqueValues()
 
-    for province in provinces:
-        createViewForProvince(province)
+    # Loop through all unique values and create a view for it
+    for uniqueValue in uniqueValues:
+        createViewForUniqueValue(uniqueValue)
     
     LogInfo("Script completed")
 
-def getProvinces():
-    """Get the provinces from the province Feature Service"""
+def getUniqueValues():
+    """Get the unique values from the Feature Service"""
 
-    queryUrl = f"{_provinceFLUrl}/query"
+    queryUrl = f"{_sourceFSUrl}/query"
     queryParams = {}
-    queryParams["where"] = "SoortGebied = 'Provincie'"
-    queryParams["outFields"] = "*"
-
+    queryParams["where"] = "1 = 1"
+    queryParams["outFields"] = _uniqueValueField
+    queryParams["returnDistinctValues"] = True
     queryResponse = sendRequest(queryUrl, queryParams)
 
-    provinces = [province["attributes"]["NaamGebied"] for province in queryResponse["features"]]
+    uniqueValues = [feature["attributes"][_uniqueValueField] for feature in queryResponse["features"]]
 
-    return provinces
+    return uniqueValues
 
-def createViewForProvince(province):
+def createViewForUniqueValue(uniqueValue):
     """Create a new View from the source layer"""
 
     # Create json with view information using source service
     viewJson = {}
-    viewJson["name"] = f"Onderwijslocaties {province}"
+    # Generate a unique name for the view (fs name + unique value)
+    viewJson["name"] = f"{_sourceFSUrl.split('/')[-2]} {uniqueValue}"
     for serviceProperty in _viewServiceProperties:
         viewJson[serviceProperty] = _sourceService[serviceProperty]
 
     # CreateService
-    LogInfo(f"Creating Service for {province}")
+    LogInfo(f"Creating Service for {uniqueValue}")
     createServiceUrl = f"https://www.arcgis.com/sharing/rest/content/users/{_username}/createService"
     createServiceParams = {}
     createServiceParams["isView"] = True
@@ -105,10 +107,10 @@ def createViewForProvince(province):
 
         addToDefinitionResponse = sendRequest(addToDefinitionUrl, addToDefinitionParams)
         if addToDefinitionResponse["success"] == False:
-            LogException(f"Unable to add layer to view for {province}: {addToDefinitionResponse['error']['message']}")
+            LogException(f"Unable to add layer to view for {uniqueValue}: {addToDefinitionResponse['error']['message']}")
 
-        # Update _sourceServiceData for current province
-        provinceData = editViewData(province)
+        # Update _sourceServiceData for current unique value
+        uniqueValueData = editViewData(uniqueValue)
 
         # Update View
         LogInfo("Update View")
@@ -116,11 +118,11 @@ def createViewForProvince(province):
         updateViewParams = {}
         updateViewParams["title"] = viewJson["name"]
         updateViewParams["id"] = viewItemID
-        updateViewParams["text"] = json.dumps(provinceData)
+        updateViewParams["text"] = json.dumps(uniqueValueData)
 
         updateViewResponse = sendRequest(updateViewUrl, updateViewParams)
         if updateViewResponse["success"] == False:
-            LogException(f"Unable to update view for {province}: {updateViewResponse['error']['message']}")
+            LogException(f"Unable to update view for {uniqueValue}: {updateViewResponse['error']['message']}")
 
         # Share View
         LogInfo("Share View")
@@ -130,22 +132,22 @@ def createViewForProvince(province):
 
         shareViewResponse = sendRequest(shareViewUrl, shareViewParams)
         if len(shareViewResponse["notSharedWith"]) > 0:
-            LogException(f"Unable to share view for {province}")
+            LogException(f"Unable to share view for {uniqueValue}")
     else:
-        LogException(f"Could not create view for {province}: {createServiceResponse['error']['message']}")
+        LogException(f"Could not create view for {uniqueValue}: {createServiceResponse['error']['message']}")
 
     return viewItemID, viewServiceUrl
 
-def editViewData(province):
-    """Edit the source service data for the current province"""
+def editViewData(uniqueValue):
+    """Edit the source service data for the current unique value"""
 
     # Create a copy from the source service data
-    provinceData = copy.deepcopy(_sourceServiceData)
+    uniqueValueData = copy.deepcopy(_sourceServiceData)
 
-    # Change service data to use current province information
-    provinceData["layers"][0]["layerDefinition"]["definitionExpression"] = f"PROVINCIE = '{province}'"
+    # Change service data to use current unique value information (assumes a string value )
+    uniqueValueData["layers"][0]["layerDefinition"]["definitionExpression"] = f"{_uniqueValueField} = '{uniqueValue}'"
 
-    return provinceData
+    return uniqueValueData
 
 def readSourceData():
     """Read information from the source Feature Service"""
