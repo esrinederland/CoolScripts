@@ -9,10 +9,10 @@ from logUtils import *
 _logFilePath = r"D:/Temp/Logging/createViews_[date].log"
 
 # ArcGIS Online
-_sourceFLUrl = ""
+_sourceFLUrl = "[YOUR-FEATURE-LAYER-URL]"
 _uniqueValueField = "PROVINCIE"
-_username = ""
-_password = ""
+_username = "[YOUR-USERNAME]"
+_password = "[YOUR-PASSWORD]"
 
 # Sript parameters
 _viewServiceProperties = ["serviceDescription", "hasStaticData","maxRecordCount", "supportedQueryFormats", "capabilities",	"description", 
