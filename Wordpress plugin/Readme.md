@@ -18,3 +18,7 @@ Click the "Update" button, navigate to the live page and refresh it to see your 
 ![Add shortcode](../images/wp_plugin_admin.png)<br/>
 
 ![Map in page](../images/wp_plugin.png)<br/>
+
+
+## app.js
+The app.js file in this sample is very basic and only adds a webmap. But you can of course take it as a boilerplate sample to create a complete ArcGIS JavaScript API application that can be used within any Wordpress site.
