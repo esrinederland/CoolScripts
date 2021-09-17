@@ -73,7 +73,6 @@ print(f"\n{'Title':60s}| {'Type':30s}| {'ItemID':40s}| {'Owner':30s}| {'Created'
 
 for key in items_by_id.keys():
     item = items_by_id[key]
-    # if item.type in listItemTypes or len(listItemTypes) == 0:
     if item.type in listItemTypes or listItemTypes[0] == "*":
         print(f"\n{item.title:60s}| {item.type:30s}| {item.itemid:40s}| {item.owner:30s}| {datetime.utcfromtimestamp(item.created/1000).strftime('%Y-%m-%d %H:%M:%S'):30s}| {datetime.utcfromtimestamp(item.modified/1000).strftime('%Y-%m-%d %H:%M:%S'):30s}| {item.access:15s}", end = "| ")
         if 'groups' in item:
