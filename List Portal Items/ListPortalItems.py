@@ -2,8 +2,8 @@ from arcgis.gis import GIS
 from getpass import getpass
 from datetime import datetime
 
-portalUrl = "https://mjagtportal.maps.arcgis.com"
-portalUser = "mjagtPortal"
+portalUrl = "[YOUR_PORTAL_URL]"
+portalUser = "[YOUR_PORTAL_USER]"
 # Item types
 # If you want to list all item types: "*"
 # Oherwise list one or more of the following item types foud here: https://developers.arcgis.com/rest/users-groups-and-items/items-and-item-types.htm
