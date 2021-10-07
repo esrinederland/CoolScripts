@@ -9,7 +9,7 @@ These are the steps to schedule a script called "myNotebookScript.py":
 ![Step 3](../images/ScheduledNotebook/step3.png)<br/>
 ![Step 4](../images/ScheduledNotebook/step4.png)<br/>
 ![Step 5](../images/ScheduledNotebook/step5.png)<br/>
-3. Delete all existing cells, except the title
+3. Delete all existing cells, except the title and the empty cell at the bottom
 ![Step 6](../images/ScheduledNotebook/step6.png)<br/>
 4. Navigate to Files > home and add (upload) myNotebookScript.py
 ![Step 7](../images/ScheduledNotebook/step7.png)<br/>
