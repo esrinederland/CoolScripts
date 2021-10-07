@@ -22,7 +22,7 @@ These are the steps to schedule a script called "myNotebookScript.py":
 ![Step 9](../images/ScheduledNotebook/step9.png)<br/>
 9. Create a task and call it "Execute Script"
 ![Step 10](../images/ScheduledNotebook/step10.png)<br/>
-10. Add the parameters "username" and "password" to the task. This allows you to pass variable into the script, so you don't have to store a username and password in the script itself
+10. Add the parameters "username" and "password" to the task. This allows you to pass variables into the script, so you don't have to store a username and password in the script itself
 ![Step 11](../images/ScheduledNotebook/step11.png)<br/>
 11. Set a schedule for the task
 ![Step 12](../images/ScheduledNotebook/step12.png)<br/>
