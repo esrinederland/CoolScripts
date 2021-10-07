@@ -4,7 +4,6 @@ You can schedule your own Python scripts using ArcGIS Online Hosted Notebooks. T
 These are the steps to schedule a script called "myNotebookScript.py":
 <br>
 1. Create a new Notebook (in this case we choose "Standard")
-![Step 1](../images/ScheduledNotebook/step1.png)<br/>
 ![Step 2](../images/ScheduledNotebook/step2.png)<br/>
 2. Save the Notebook to enable the "Tasks"
 ![Step 3](../images/ScheduledNotebook/step3.png)<br/>
