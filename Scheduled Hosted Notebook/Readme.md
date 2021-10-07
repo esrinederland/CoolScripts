@@ -31,6 +31,7 @@ These are the steps to schedule a script called "myNotebookScript.py":
 <br>
 The task will now run at whatever schedule you have chosen. The minimum interval is 15 minutes, so you can't run the script more often than that.
 <br>
+<br>
 By clicking on the task you reveal all runs.
 ![Step 14](../images/ScheduledNotebook/step14.png)<br/>
 <br>
