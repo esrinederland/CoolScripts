@@ -30,15 +30,5 @@ These are the steps to schedule a script called "myNotebookScript.py":
 The task will now run at whatever schedule you have chosen. The minimum interval is 15 minutes, so you can't run the script more often than that.
 When you click on the task, a window will open showing all runs and their status.
 ![Step 14](../images/ScheduledNotebook/step14.png)<br/>
-If you then click on the icon in the Results column, it will display the executed Notebook, which itself has executed your Python script.
+If you then click on the icon in the "Results" column, it will display the executed Notebook, which itself has executed your Python script.
 ![Step 15](../images/ScheduledNotebook/step15.png)<br/>
-<br>
-The task will now run at whatever schedule you have chosen. The minimum interval is 15 minutes, so you can't run the script more often than that.
-<br>
-<br>
-By clicking on the task you reveal all runs.
-![Step 14](../images/ScheduledNotebook/step14.png)<br/>
-<br>
-By clicking on the results of a run you reveal the executed Notebook, which itself has executed your Python script.
-![Step 15](../images/ScheduledNotebook/step15.png)<br/>
-![Step 13](../images/ScheduledNotebook/step13.png)<br/>
