@@ -36,3 +36,4 @@ By clicking on the task you reveal all runs.
 <br>
 By clicking on the results of a run you reveal the executed Notebook, which itself has executed your Python script.
 ![Step 15](../images/ScheduledNotebook/step15.png)<br/>
+![Step 13](../images/ScheduledNotebook/step13.png)<br/>
