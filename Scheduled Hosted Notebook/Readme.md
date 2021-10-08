@@ -1,8 +1,8 @@
 # Schedule a python script using an ArcGIS Online Hosted Notebook
 You can schedule your own Python scripts using ArcGIS Online Hosted Notebooks. This eliminates the need of having your own server to schedule scripts. If you want to use ArcPy functionality you will need to create an "Advanced" Notebook, otherwise a "Standard" Notebook is sufficient. And of course you can't use local data sources when using ArcGIS Online Hosted Notebooks.
-<br>
+<br/>
 These are the steps to schedule a script called "myNotebookScript.py":
-<br>
+<br/>
 1. Create a new Notebook (in this case we choose "Standard")
 ![Step 2](../images/ScheduledNotebook/step2.png)<br/>
 2. Save the Notebook to enable the "Tasks"
@@ -28,10 +28,10 @@ These are the steps to schedule a script called "myNotebookScript.py":
 12. Save the task
 ![Step 13](../images/ScheduledNotebook/step13.png)<br/>
 The task will now run at whatever schedule you have chosen. The minimum interval is 15 minutes, so you can't run the script more often than that.
-<br>
+<br/>
 When you click on the task, a window will open showing all runs and their status.
 ![Step 14](../images/ScheduledNotebook/step14.png)<br/>
-<br>
+<br/>
 If you then click on the icon in the Results column, it will display the executed Notebook, which itself has executed your Python script.
 ![Step 15](../images/ScheduledNotebook/step15.png)<br/>
 <br>
