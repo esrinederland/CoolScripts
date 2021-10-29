@@ -1,0 +1,126 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Fetch ArcGIS REST</title>
+    <!-- <link rel="shortcut icon" href="/img/favicon.ico"> -->
+    <!-- get calcite-web css from the cdn (use latest version) -->
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.0-beta.63/calcite.css" />
+    <style>
+      html,body
+      {
+        height:100%;
+      }
+
+      #header
+      {
+        height:60px;
+        padding:10px 0px 0px 15px;
+      }
+
+      #bodywrapper
+      {
+        display:block;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .footer
+      {
+        padding-top: 0px;
+      }
+
+      #formDiv {
+          height: 100px;
+          margin: 5px;
+      }
+
+      #resultData {
+          font-size: 14px;
+      }
+
+      calcite-input {
+        margin-top: 5px; 
+      }
+
+      calcite-button {
+        height: 25px;
+        margin-top: 5px;
+      }
+    </style>
+    <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+    <script src="https://js.arcgis.com/4.18/"></script>
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.0-beta.63/calcite.esm.js"></script>
+    <script nomodule="" src="https://js.arcgis.com/calcite-components/1.0.0-beta.63/calcite.js"></script>
+
+    <script>
+    function findAddressCandidates() {
+        let url = 'https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates';
+        try {
+            // Define the parameters object (well known to ArcGIS developers)
+            const params = {
+                "f": "json", 
+                "singleline" : document.getElementById("geocodeAddress").value, 
+                "token" : "AAPKae3dab1f05f948b69237b3469b47aa40ccRlxQCH8occ_IBIyNrAhGtY9NaONVg54soZcUqSolmTHii1ZAZ8YFr6Dmf1AcHW"
+            };
+
+            // This is where the magic happens
+            // Create the form body based on the params to send with the POST request
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            // Create the options object to send with the fetch
+            const options = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                method: 'POST',
+                body: formBody  
+            };
+
+            // Fetch the data
+            fetch(url, options).then(response => response.json().then(function(data) {
+                document.getElementById("resultData").innerHTML = JSON.stringify(data, undefined, 2);
+            }));
+        } catch (error) {
+            console.log("Error: ", error);
+        }
+    }
+    </script>
+    
+</head>
+<body>
+ 
+    <!-- header -->
+    <div id="header" class="panel-dark-blue"><h2>Fetch data from an ArcGIS REST service</h2></div>
+
+    <!-- content of page -->
+    <div id="bodywrapper"> 
+      <div id="formDiv">
+          Type (part of) an address: 
+          <calcite-input id="geocodeAddress" value="Koggelaan 33, Zwolle"></calcite-input>
+          <calcite-button onclick="findAddressCandidates()">Find Address Candidates</calcite-button>&nbsp;[<a href="https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm" target="_blank">Documentation</a>]
+        </div>
+        <pre id="resultData"></pre>
+    </div>
+    <div class="footer" role="contentinfo">
+        <!-- content of footer -->
+        <div class="esri-logo"></div>
+    </div>
+
+  <!-- get calcite-web js from the cdn (use latest version) -->
+
+  <!-- interactive patterns need to be initialized -->
+  <script>
+     calcite.init()
+  </script>
+</body>
+</html>
