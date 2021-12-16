@@ -32,6 +32,8 @@ upsertFeatures = [
     }
 ]
 
+...
+
 # upsert the features to the feature layer
 # the Python API returns a boolean value wheter the upsert operation has succeeded or not
 success =  featureLayerObject.append(
