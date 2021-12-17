@@ -114,7 +114,7 @@ def main():
         featureCollectionJson = json.dumps(featureCollection)
 
         # upsert the features to the feature layer
-        # the Python API returns a boolean value wheter the upsert operation has succeeded or not
+        # the Python API returns a boolean value whether the upsert operation has succeeded or not
         success =  featureLayerObject.append(
             edits=featureCollectionJson, 
             upsert=True, 
