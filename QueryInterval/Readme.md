@@ -11,5 +11,4 @@ features = featureLayerObject.query(where="EditDate > CURRENT_TIMESTAMP - INTERV
 logInfo(f"These features were edited within the last 12 hours: {features}")
 ```
 
-Documentation on Date-time queries and the INTERVAL syntax can be found 
-[here](https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer-.htm#:~:text=json%20|%20geojson%20|%20pbf-,Date-time%20queries,-If%20you%20are)
+Documentation on Date-time queries and the INTERVAL syntax can be found <a href="https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer-.htm#:~:text=json%20|%20geojson%20|%20pbf-,Date-time%20queries,-If%20you%20are" target="_blank">here</a>
