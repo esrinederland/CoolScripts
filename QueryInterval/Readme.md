@@ -1,4 +1,4 @@
-# the INTERVAL syntax
+# The INTERVAL syntax
 This samples shows how use the INTERVAL syntax with feature layer queries. At 10.6.1 and later, the INTERVAL syntax can be used in place of the date-time queries and will be standardized across all map and feature services. This means that you don't have to calculate intervals yourself in Python because you can use the build-in functionality in your queries. 
 
 ``` Python
