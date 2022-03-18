@@ -7,8 +7,8 @@ This Notebook shows how you can create a Map in the MapView Widget in an ArcGIS 
 ```
 webmapProperties = {
     "title": f"Gemeenteraadsverziekingen 2022: {gemeente}",
-    "snippet": "WebMap created from MapViewer Widget in a Notebook",
-    "tags": ["automation", "python", "MapViewer", "Notebook", gemeente]
+    "snippet": "WebMap created from MapView Widget in a Notebook",
+    "tags": ["automation", "python", "MapView", "Notebook", gemeente]
 }
 webmapItem = newMap.save(webmapProperties)
 ```
