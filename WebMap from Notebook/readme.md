@@ -1,5 +1,5 @@
-# Creating a WebMap from the MapViewer Widget in a Notebook
-This Notebook shows how you can create a Map in the MapViewer Widget in an ArcGIS Hosted Notebook and save it as a new WebMap Item in your Portal. 
+# Creating a WebMap from the MapView Widget in a Notebook
+This Notebook shows how you can create a Map in the MapView Widget in an ArcGIS Hosted Notebook and save it as a new WebMap Item in your Portal. 
 <br>
 <br>
 ![Save WebMap](../images/20220318_WebMapFromNotebook.PNG)
