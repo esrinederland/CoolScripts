@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
-
 import arcpy
-from sqlalchemy import true
-
 
 class Toolbox(object):
     def __init__(self):
         """Define the toolbox (the name of the toolbox is the name of the
         .pyt file)."""
-        self.label = "Toolbox"
-        self.alias = "toolbox"
+        self.label = "Select a city"
+        self.alias = "Select a city with a ArcGIS Webtool"
 
         # List of tool classes associated with this toolbox
         self.tools = [Tool]
@@ -39,7 +36,7 @@ class Tool(object):
             direction="Input")
 
         param2 = arcpy.Parameter(
-            displayName="City name",
+            displayName="City name(s)",
             name="out_features",
             datatype="GPString",
             parameterType="Derived",
