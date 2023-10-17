@@ -83,7 +83,7 @@ def main():
                 "attributes": {
                     "driverID": 1,
                     "driverName": "Max Verstappen",
-                    "totalWorldChampionships": 2,
+                    "totalWorldChampionships": 3,
                     "isWorldChampion": True
                 },
                 "geometry": {
